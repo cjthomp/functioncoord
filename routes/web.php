@@ -1,8 +1,6 @@
 <?php
 
-Route::get('/', function () {
-    return view('splash');
-});
+Route::get('/', 'WelcomeController@index')->name('splash');
 
 Auth::routes();
 
