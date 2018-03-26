@@ -11,6 +11,19 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+.splash header {
+  background: #d66722;
+  border-bottom: 20px solid #b00000;
+}
+
+.splash a, .splash a:link, .splash a:hover {
+  color: #2276d6;
+}
+
+.splash main {
+
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
