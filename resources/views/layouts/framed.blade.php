@@ -50,6 +50,13 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a href="{{ route('notifications') }}" class="dropdown-item">Notifications</a>
+                                <hr>
+                                <a href="{{ route('profile') }}" class="dropdown-item">Profile</a>
+                                <a href="{{ route('company') }}" class="dropdown-item">Company</a>
+                                <a href="{{ route('calendar') }}" class="dropdown-item">Calendar</a>
+                                <a href="{{ route('tasks') }}" class="dropdown-item">Tasks</a>
+                                <hr>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
