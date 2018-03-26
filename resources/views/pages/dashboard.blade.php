@@ -1,5 +1,7 @@
 @extends('layouts.framed')
 
+@section('title', 'Dashboard')
+
 @section('content')
 <div class="banner" style="padding: 10px 0 2px;
     background-color: #56AA46;
@@ -10,7 +12,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                Events
+                <h2>
+                    Events
+                </h2>
             </div>
         </div>
     </div>
