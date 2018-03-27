@@ -40,34 +40,34 @@
         <div class="col-md-10" id="event-cards" title="if starredCount > 0">
 
             <div class="event-cards-list" style="width: 100%;">
-                @foreach ([1,2,3,4,5,6,7] as $i)
+                @foreach ($events as $e)
                 <div class="event-cards-item border-dark">
                     <div class="card-body">
-                        <h5 class="card-title">Event Card</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Event #{{ $i }}</h6>
+                        <h5 class="card-title">{{ $e->name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Event #{{ $e->id }}</h6>
                         <ul class="card-text list-unstyled">
                             <li>
                                 <span class="event-card-row-title">From:</span>
-                                <span class="event-card-row-text">Thu Jan 31, 2018</span>
+                                <span class="event-card-row-text">{{ $e->starts_at }}</span>
                             </li>
                             <li>
                                 <span class="event-card-row-title">To:</span>
-                                <span class="event-card-row-text">Sun Feb 03, 2018</span>
+                                <span class="event-card-row-text">{{ $e->ends_at }}</span>
                             </li>
                             <li>
                                 <span class="event-card-row-title">Venue:</span>
-                                <span class="event-card-row-text">Moscone Center</span>
+                                <span class="event-card-row-text">{{ $e->metadata->venue->name or '--' }}</span>
                             </li>
                             <li>
                                 <span class="event-card-row-title">Client:</span>
-                                <span class="event-card-row-text">Amazon</span>
+                                <span class="event-card-row-text">{{ $e->metadata->client or '--' }}</span>
                             </li>
                             <li>
-                                Last Updated at ...
+                                Last Updated at {{ $e->updated_at }}
                             </li>
                         </ul>
-                        <a href="{{ route('events.show', [$i]) }}" class="card-link">Details</a>
-                        <a href="{{ route('mockup', ['pages.circles']) }}?event={{ $i }}" class="card-link">Circles</a>
+                        <a href="{{ route('events.show', [$e->id]) }}" class="card-link">Details</a>
+                        <a href="{{ route('mockup', ['pages.circles']) }}?event={{ $e->id }}" class="card-link">Circles</a>
                     </div>
                 </div>
                 @endforeach
@@ -91,10 +91,16 @@
                     <th>Starts</th>
                     <th>Ends</th>
                 </tr>
-                @foreach([1,2,3,4,5,6,7,8,9,10] as $i)
+                @foreach($events as $e)
                 <tr>
-                    <td><i class="fa fa-star-o"></i></td>
-                    <td colspan="5">I'm Event Row #{{ $i }}. Yay!</td>
+                    <td><i class="fa {{ $e->pivot->starred_at ? 'fa-star' : 'fa-star-o' }}"></i></td>
+                    <td>
+                        <a href="{{ route('events.show', [$e->id]) }}">{{ $e->name }}</a>
+                    </td>
+                    <td>{{ $e->metadata->venue or '--' }}</td>
+                    <td>{{ $e->metadata->client or '--' }}</td>
+                    <td>{{ $e->starts_at or '--' }}</td>
+                    <td>{{ $e->ends_at or '--' }}</td>
                 </tr>
                 @endforeach
             </table>
