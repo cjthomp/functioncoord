@@ -20,6 +20,8 @@ class User extends Authenticatable
 
     public function events() : BelongsToMany
     {
-        return $this->belongsToMany(Event::class, 'userevents');
+        return $this->belongsToMany(Event::class, 'userevents')
+            ->withTimestamps()
+            ->withPivot(['is_owner', 'starred_at', 'hidden_at']);
     }
 }

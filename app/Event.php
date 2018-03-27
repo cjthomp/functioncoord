@@ -13,6 +13,8 @@ class Event extends Model
 
     public function users() : BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'userevents');
+        return $this->belongsToMany(User::class, 'userevents')
+            ->withTimestamps()
+            ->withPivot(['is_owner', 'starred_at', 'hidden_at']);
     }
 }
