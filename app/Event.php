@@ -11,6 +11,13 @@ class Event extends Model
 
     protected $hidden = [];
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'starts_at',
+        'ends_at',
+    ];
+
     public function users() : BelongsToMany
     {
         return $this->belongsToMany(User::class, 'userevents')
