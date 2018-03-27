@@ -43,16 +43,16 @@
                 @foreach ($events as $e)
                 <div class="event-cards-item border-dark">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $e->name }}</h5>
+                        <h5 class="card-title" style="max-height: 43px; overflow-y: hidden;">{{ $e->name }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Event #{{ $e->id }}</h6>
                         <ul class="card-text list-unstyled">
                             <li>
                                 <span class="event-card-row-title">From:</span>
-                                <span class="event-card-row-text">{{ $e->starts_at }}</span>
+                                <span class="event-card-row-text">{{ $e->starts_at ? $e->starts_at->format('Y-m-d') : '--' }}</span>
                             </li>
                             <li>
                                 <span class="event-card-row-title">To:</span>
-                                <span class="event-card-row-text">{{ $e->ends_at }}</span>
+                                <span class="event-card-row-text">{{ $e->ends_at ? $e->ends_at->format('Y-m-d') : '--' }}</span>
                             </li>
                             <li>
                                 <span class="event-card-row-title">Venue:</span>
@@ -63,7 +63,7 @@
                                 <span class="event-card-row-text">{{ $e->metadata->client or '--' }}</span>
                             </li>
                             <li>
-                                Last Updated at {{ $e->updated_at }}
+                                <small>Last Updated at {{ $e->updated_at ? $e->updated_at->format('Y-m-d') : $e->created_at->format('Y-m-d') }}</small>
                             </li>
                         </ul>
                         <a href="{{ route('events.show', [$e->id]) }}" class="card-link">Details</a>
@@ -99,8 +99,8 @@
                     </td>
                     <td>{{ $e->metadata->venue or '--' }}</td>
                     <td>{{ $e->metadata->client or '--' }}</td>
-                    <td>{{ $e->starts_at or '--' }}</td>
-                    <td>{{ $e->ends_at or '--' }}</td>
+                    <td>{{ $e->starts_at ? $e->starts_at->format('Y-m-d') : '--' }}</td>
+                    <td>{{ $e->ends_at ? $e->ends_at->format('Y-m-d') : '--' }}</td>
                 </tr>
                 @endforeach
             </table>

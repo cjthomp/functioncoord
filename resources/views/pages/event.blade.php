@@ -1,6 +1,6 @@
 @extends('layouts.framed')
 
-@section('title', 'Event')
+@section('title', $event->name ?? 'Event')
 
 @section('content')
 <div class="banner" style="padding: 10px 0 2px;
@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-md-10">
                 <h2>
-                    Event / Event Title
+                    Event / {{ $event->name or 'Name' }}
                 </h2>
             </div>
             <div class="col-md-2">
@@ -27,9 +27,9 @@
     <div class="row">
         <div class="col-md-12">
             <h3>
-                <span class="event-header-date-start">31 January</span>
+                <span class="event-header-date-start">{{ $event->starts_at->format('D, j M') ?? '--' }}</span>
                 to
-                <span class="event-header-date-end">03 February</span>
+                <span class="event-header-date-end">{{ $event->ends_at ? $event->ends_at->format('D, j M') : '--' }}</span>
             </h3>
         </div>
     </div>
@@ -38,17 +38,17 @@
             <div class="event-detail-field"></div>
             <i class="fa fa-user"></i> Created by @username
             <div class="event-detail-field"></div>
-            <i class="fa fa-user"></i> Technical Director is @username
+            <i class="fa fa-user"></i> Technical Director is {{ $event->metadata->td or '@username' }}
             <div class="event-detail-field"></div>
-            <i class="fa fa-user"></i> Production Director is @username
+            <i class="fa fa-user"></i> Production Director is {{ $event->metadata->pd or '@username' }}
         </div>
         <div class="col-md-3">
             <div class="event-detail-field"></div>
-            <i class="fa fa-user"></i> Venue is Moscone Center
+            <i class="fa fa-user"></i> Venue is {{ $event->metadata->venue->name or '--' }}
             <div class="event-detail-field"></div>
-            <i class="fa fa-user"></i> Client is Amazon
+            <i class="fa fa-user"></i> Client is {{ $event->metadata->client or '--' }}
             <div class="event-detail-field"></div>
-            <i class="fa fa-user"></i> Number of Attendees is 2000
+            <i class="fa fa-user"></i> Number of Attendees is {{ $event->metadata->attendees or '--' }}
         </div>
         <div class="offset-md-3">
             &nbsp;
