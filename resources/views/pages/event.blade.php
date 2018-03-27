@@ -26,11 +26,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            31 January to 03 February
+            <h3>
+                <span class="event-header-date-start">31 January</span>
+                to
+                <span class="event-header-date-end">03 February</span>
+            </h3>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="event-detail-field"></div>
             <i class="fa fa-user"></i> Created by @username
             <div class="event-detail-field"></div>
@@ -46,7 +50,7 @@
             <div class="event-detail-field"></div>
             <i class="fa fa-user"></i> Number of Attendees is 2000
         </div>
-        <div class="offset-md-4">
+        <div class="offset-md-3">
             &nbsp;
         </div>
         <div class="col-md-2">

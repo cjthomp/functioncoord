@@ -11,6 +11,11 @@
 |
 */
 
+function user() : ?\App\User
+{
+    return \Auth::user();
+}
+
 $app = new Illuminate\Foundation\Application(
     realpath(__DIR__.'/../')
 );

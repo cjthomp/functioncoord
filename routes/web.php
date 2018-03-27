@@ -6,6 +6,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('events', 'EventsController');
+Route::get('events/list', 'EventsController@list');
+
 // Named routes allow us to swap these mocks out for the implemented counterparts without changing the views
 Route::get('/mockups/dashboard', 'MockupsController@dashboard')->name('dashboard');
 Route::get('/mockups/event/{event}', 'MockupsController@event')->name('event');

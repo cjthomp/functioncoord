@@ -66,7 +66,7 @@
                                 Last Updated at ...
                             </li>
                         </ul>
-                        <a href="{{ route('mockup', ['pages.event']) }}?event={{ $i }}" class="card-link">Details</a>
+                        <a href="{{ route('events.show', [$i]) }}" class="card-link">Details</a>
                         <a href="{{ route('mockup', ['pages.circles']) }}?event={{ $i }}" class="card-link">Circles</a>
                     </div>
                 </div>
